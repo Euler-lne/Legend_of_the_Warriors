@@ -136,9 +136,11 @@ GameObject:
   - component: {fileID: 340687838}
   - component: {fileID: 340687837}
   - component: {fileID: 340687841}
+  - component: {fileID: 340687844}
   - component: {fileID: 340687843}
   - component: {fileID: 340687842}
-  - component: {fileID: 340687844}
+  - component: {fileID: 340687845}
+  - component: {fileID: 340687846}
   m_Layer: 8
   m_Name: Boar
   m_TagString: Untagged
@@ -378,6 +380,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &340687845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340687836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75cc3e890224f0449c93881543bb7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSpeed: 100
+  chaseSpeed: 260
+  currentSpeed: 0
+  faceDir: {x: 0, y: 0, z: 0}
+--- !u!114 &340687846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340687836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b33cd824b70a0c4fb6926833386367c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGround: 0
+  manual: 1
+  checkRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  bottomOffset: {x: -0.17, y: -0.97}
+  touchLeftWall: 0
+  leftOffset: {x: -1.11, y: -0.41}
+  touchRightWall: 0
+  rightOffset: {x: 0.95, y: -0.41}
 --- !u!1 &471711266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,14 +1199,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd1c7a20e201de4fb4e6656802d3360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 260
+  speed: 290
   jumpForce: 16.5
   isHurt: 0
   hurtForce: 8
   isDead: 0
   isAttack: 0
-  normal: {fileID: 0}
-  wall: {fileID: 0}
+  normal: {fileID: 6200000, guid: 9bfc336888534c9499f96c6828cdbdaf, type: 2}
+  wall: {fileID: 6200000, guid: ffc165ea1ed585641bb9305bba3eebc4, type: 2}
 --- !u!114 &737452694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,12 +1219,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b33cd824b70a0c4fb6926833386367c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGround: 0
+  isGround: 1
+  manual: 0
   checkRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   bottomOffset: {x: -0.06, y: 0}
+  touchLeftWall: 0
+  leftOffset: {x: -0.39, y: 0.88}
+  touchRightWall: 0
+  rightOffset: {x: 0.3, y: 0.88}
 --- !u!95 &737452695
 Animator:
   serializedVersion: 5
@@ -3691,7 +3737,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
