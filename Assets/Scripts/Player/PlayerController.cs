@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimation playerAnimation;
     public bool isAttack;
 
+    [Header("物理材质")]
+    public PhysicsMaterial2D normal;
+    public PhysicsMaterial2D wall;
+
 
     private void Awake()
     {
@@ -51,12 +55,14 @@ public class PlayerController : MonoBehaviour
     {
         // 一直获取输入
         inputDirection = inputControl.Gameplay.Move.ReadValue<Vector2>();
+
+        CheckState();
     }
 
     private void FixedUpdate()
     {
         //刚体主要放到FixedUpdate中
-        if (!isHurt)
+        if (!isHurt && !isAttack)
             Move();
     }
 
@@ -95,5 +101,10 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         inputControl.Gameplay.Disable();
+    }
+
+    private void CheckState()
+    {
+        rb2D.sharedMaterial = physicsCheck.isGround ? normal : wall;
     }
 }
